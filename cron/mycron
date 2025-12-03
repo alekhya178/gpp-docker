@@ -1,4 +1,3 @@
-# Replace cron/mycron content (makes sure newline at EOF)
 cat > cron/mycron <<'EOF'
-* * * * * cd /app && PYTHONPATH=/app python3 -m app.scripts.log_2fa_cron >> /cron/last_code.txt 2>&1
+* * * * * root cd /app && PYTHONPATH=/app python3 -m app.scripts.log_2fa_cron >> /cron/last_code.txt 2>&1
 EOF

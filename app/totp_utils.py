@@ -49,8 +49,6 @@ def verify_totp_code(hex_seed: str, code: str, valid_window: int = 1) -> bool:
     """
     b32 = _hex_to_base32(hex_seed)
     totp = pyotp.TOTP(b32, digits=6, interval=30)
-    # totp.verify(code, valid_window=...) accepts int window
-    # pyotp verify: valid_window means number of steps of skew to allow.
     try:
         return bool(totp.verify(code, valid_window=valid_window))
     except Exception:
